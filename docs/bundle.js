@@ -730,7 +730,7 @@ function WeatherFetcher(bus, key) {
 
 WeatherFetcher.prototype = {
   fetchWeather: function fetchWeather(coords) {
-    var requestURL = 'https://cors-proxy.htmldriven.com/?url=https://api.darksky.net/forecast/' + this.key + '/' + coords.lat + ',' + coords.lng + '?lang=en&units=ca';
+    var requestURL = 'https://api.darksky.net/forecast/' + this.key + '/' + coords.lat + ',' + coords.lng + '?lang=en&units=ca';
     if (this.method === 'fetch') {
       return fetch(requestURL).then(function (result) {
         return result.json();
