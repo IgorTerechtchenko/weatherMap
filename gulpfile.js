@@ -8,7 +8,7 @@ gulp.task('default',['copyStaticFiles', 'build', 'startServer', 'runTests', 'wat
 
 gulp.task('copyStaticFiles', function() {
     return gulp.src(['./app/*.html', './app/css/*', './app/img/*'])
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./docs'));
 });
 
 gulp.task('build', function() {
@@ -20,13 +20,13 @@ gulp.task('build', function() {
     }))
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./docs'))
     .pipe(connect.reload());
 });
 
 gulp.task('copyTestFiles', function() {
   gulp.src('./app/tests/*.html')
-  .pipe(gulp.dest('./dist/tests'));
+  .pipe(gulp.dest('./docs/tests'));
 });
 
 gulp.task('buildTests', function() {
@@ -38,7 +38,7 @@ gulp.task('buildTests', function() {
     }))
     .bundle()
     .pipe(source('tests.js'))
-    .pipe(gulp.dest('./dist/tests'))
+    .pipe(gulp.dest('./docs/tests'))
     .pipe(connect.reload());
 });
 
@@ -54,7 +54,7 @@ gulp.task('watch', function () {
 
 gulp.task('startServer', function() {
     connect.server({
-        root : './dist',
+        root : './docs',
         livereload : true,
         port : 3001
     });
