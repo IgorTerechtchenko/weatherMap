@@ -6,7 +6,7 @@ export default function WeatherFetcher(bus, key, method='fetch') {
 
 WeatherFetcher.prototype = {
   fetchWeather: function(coords) {
-    var requestURL = `https://cors-proxy.htmldriven.com/?url=https://api.darksky.net/forecast/${this.key}/${coords.lat},${coords.lng}?lang=en&units=ca`
+    var requestURL = `https://api.darksky.net/forecast/${this.key}/${coords.lat},${coords.lng}?lang=en&units=ca`
     if(this.method === 'fetch') {
       return fetch(requestURL).
         then(result => result.json()).
