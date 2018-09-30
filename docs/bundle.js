@@ -198,7 +198,7 @@ var header = document.querySelector('.header');
 var content = document.querySelector('.content');
 var footer = document.querySelector('.footer');
 var currentPosition = { lat: 55.7558, lng: 37.6173 };
-var darkSkyKey = 'd113af5f82393ef553f48314ae9f42e8';
+var darkSkyKey = '9b4e68104fff62ae77dc24bc50f6706a';
 var geocodeKey = 'AIzaSyDa7DCL2NO9KMPd9DYVk_u3u0wCbm0XXFY';
 
 var eventBus = new _event_bus2.default();
@@ -301,7 +301,7 @@ eventBus.on('centerChange', function () {
   weatherFetcher.fetchWeather(currentPosition).then(function (result) {
     var response = {};
     response.summary = result.summary;
-    response.temperature = Math.round((result.temperature - 32) / 1.8 * 100) / 100; //converting to celsius and trunking to 2 digits
+    response.temperature = Math.round(result.temperature) + '°C';
     response.icon = result.icon;
     response.humidity = result.humidity;
     response.windSpeed = result.windSpeed;
@@ -730,14 +730,12 @@ function WeatherFetcher(bus, key) {
 
 WeatherFetcher.prototype = {
   fetchWeather: function fetchWeather(coords) {
-    var requestURL = 'https://api.darksky.net/forecast/' + this.key + '/' + coords.lat + ',' + coords.lng + '?lang=en&units=ca';
+    var requestURL = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + this.key + '/' + coords.lat + ',' + coords.lng + '?lang=en&units=ca';
     if (this.method === 'fetch') {
       return fetch(requestURL).then(function (result) {
         return result.json();
       }).then(function (data) {
-        return JSON.parse(data.body);
-      }).then(function (dataObj) {
-        return dataObj.currently;
+        return data.currently;
       });
     } else if (this.method === 'xhr') {
       return new Promise(function (resolve) {
@@ -745,10 +743,10 @@ WeatherFetcher.prototype = {
         xhr.open('GET', requestURL, true);
         xhr.onreadystatechange = function () {
           if (xhr.status != 200) {
-            alert(xhr.status + ': ' + xhr.statusText);
+            console.log(xhr.status + ': ' + xhr.statusText);
           } else if (xhr.responseText !== '') {
             var responseText = JSON.parse(xhr.responseText);
-            resolve(JSON.parse(responseText.body).currently);
+            resolve(responseText.currently);
           }
         };
         xhr.send();
