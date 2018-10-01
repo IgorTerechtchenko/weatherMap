@@ -1,9 +1,9 @@
-# H1 Weather Map
+# Weather Map
 Deployed at: 
 
 https://igorterechtchenko.github.io/weatherMap/
 
-## H2 Description:
+## Description:
 
 WeatherMap is a Single Page Application used to fetch weather at specified location.
 Basic Usage:
@@ -18,7 +18,7 @@ Setting url hash to _'#coordinates=[location lat, location lng]'_,
 
 
 
-## H3 Scrolling the map.
+## Scrolling the map.
 Last 5 entries are stored at local storage and displayed in the bottom left.
 
 You can go to their coordinates by clicking on them.
