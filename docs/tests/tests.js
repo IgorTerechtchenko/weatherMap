@@ -578,7 +578,7 @@ describe('Components', function () {
         });
         buttons[0].click();
         assert.isOk(log.length === 1);
-        assert.isOk(log[0] === 'XHR');
+        assert.isOk(log[0] === 'xhr');
         buttons[0].click();
         assert.isOk(log.length === 1); //not sending message if option does not change
         buttons[1].click();
@@ -586,7 +586,7 @@ describe('Components', function () {
         assert.isOk(log[1] === 'fetch');
         buttons[0].click();
         assert.isOk(log.length === 3);
-        assert.isOk(log[2] === 'XHR');
+        assert.isOk(log[2] === 'xhr');
       });
     });
   });
