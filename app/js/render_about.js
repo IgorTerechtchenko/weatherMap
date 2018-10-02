@@ -24,6 +24,7 @@ export default function renderAuthor(content) {
     <div> You can go to their coordinates by clicking on them. </div>
     <div> You can add current map center coordinates to favourites by pressing button at the top right of the map. </div>
     <div> Different query methods can be used! Alter them by selecting 'XHR' or 'fetch' at the top left. </div>
+    <a href="https://github.com/IgorTerechtchenko/weatherMap">App's github page</a>
     `;
   aboutWrapper.className = 'aboutWrapper';
   content.appendChild(aboutWrapper);
